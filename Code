@@ -1,0 +1,47 @@
+def addition(n):
+    nums = []
+    desired_nums = []
+    final_nums = []
+    if n.isnumeric() == True:
+        if int(n) > 0:
+            for i in range(int(n)):
+                nums.append(i+1)
+
+            x = 1
+            while x > 0 and x < 11:
+                u_i = input("Enter ur " + str(x) + "th desired num in that range: ")
+                if u_i.isnumeric() == True:
+                    if int(u_i) in nums:
+                        desired_nums.append(nums[int(u_i) - 1])
+                        x += 1
+                    else:
+                        print("Not in range")
+                else:
+                    print("Not number")
+            while True:
+                pattern = input("Which pattern do you want your numbers to be added up?(even,odd,normally): ")
+                if pattern.isalpha() == True:
+                    if pattern == "normally":
+                        print(sum(desired_nums))
+                        break
+                    elif pattern == "even" or pattern == "odd":
+                        for j in range(10):
+                            if pattern == "even":
+                                if desired_nums[j] % 2 == 0:
+                                    final_nums.append(desired_nums[j])
+                            else:
+                                if desired_nums[j] % 2 != 0:
+                                    final_nums.append(desired_nums[j])
+                        print(sum(final_nums))
+                        break
+                    else:
+                        print("It is neither 'even', 'odd' nor 'normally'")
+                else:
+                    print("Not in characters")
+        else:
+            print("Range is too small")
+    else:
+        print("Not number")
+
+n = input("Enter range number: ")
+addition(n)
